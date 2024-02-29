@@ -10,6 +10,13 @@
         <SolidColorBrush x:Key="ActiveElement" Color="#00D1FF"/>
         <SolidColorBrush x:Key="TextColor" Color="#FFFFFF"/>
 
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        
         <Style TargetType="Grid">
             <Setter Property="Background" Value="{StaticResource BasicColor}"/>
         </Style>
@@ -41,6 +48,10 @@
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
     </Application.Resources>
 </Application>

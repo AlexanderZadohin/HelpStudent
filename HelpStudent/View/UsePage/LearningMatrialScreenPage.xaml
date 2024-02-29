@@ -1,0 +1,41 @@
+﻿<Page x:Class="HelpStudent.View.UsePage.LearningMatrialScreenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HelpStudent.View.UsePage"
+      mc:Ignorable="d" 
+      d:DesignHeight="856" d:DesignWidth="540"
+      Title="LearningScreen">
+
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Учебный материал"/>
+            <Button Width="300" HorizontalAlignment="Left">
+                <Image Source="/Resource/Image/BackButton.png"/>
+            </Button>
+            <WrapPanel>
+                <Image/>
+                <StackPanel>
+                    <TextBlock/>
+                    <Button>
+                        <Grid>
+                            <Image/>
+                            <TextBlock/>
+                        </Grid>
+                    </Button>
+                    <TextBlock/>
+                    <Image/>
+                    <TextBlock/>
+                    <Button>
+                        <Grid>
+                            <Image/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </WrapPanel>
+            <TextBlock/>
+            <TextBlock/>
+        </StackPanel>
+    </Grid>
+</Page>

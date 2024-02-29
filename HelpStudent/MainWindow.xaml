@@ -5,45 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpStudent"
         mc:Ignorable="d"
-        Title="MainWindow" Height="920" Width="540" ResizeMode="NoResize">
+        Title="Регистрация/Вход" Height="1000" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height=".05*"/>
             <RowDefinition Height=".3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Grid>
-
-        </Grid>
         <Grid Grid.Row="1">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBox Width="400" Height="65" Margin="10 20" Text="ФИО"/>
-
-                <TextBox Width="400" Height="65" Margin="10 20" Text="Email"/>
-
-
-                <Grid>
-                    <PasswordBox x:Name="passwordBox" 
-                                 Width="400" 
-                                 Height="65" 
-                                 Margin="10 20" 
-                                 GotFocus="passwordBox_GotFocus" 
-                                 LostFocus="passwordBox_LostFocus"/>
-                    <Label x:Name="textBox" Content="Пароль" Margin="10,30,309,30"/>
-                </Grid>
-
-                <Grid>
-                    <PasswordBox x:Name="passwordBoxSec" 
-                                 Width="400" 
-                                 Height="65" 
-                                 Margin="10 20" 
-                                 GotFocus="passwordBoxSec_GotFocus" 
-                                 LostFocus="passwordBoxSec_LostFocus" />
-                    <Label x:Name="textBoxSec" Content="Повторить пароль" Margin="10,32,187,20"/>
-                </Grid>
-
-                <Button Width="300" Height="65" Margin="10 20" Content="Зарегестрироваться"/>
-                <Button Width="400" Height="65" Margin="10 20" Content="Войти" Background="{x:Null}" BorderBrush="Black" />
-            </StackPanel>
+            <Image Source="/Resource/Icons/Logotip.png"  Margin="10"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Frame Name="MainScreen" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

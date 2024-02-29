@@ -1,0 +1,33 @@
+﻿<Page x:Class="HelpStudent.View.UsePage.CollegesScreenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HelpStudent.View.UsePage"
+      mc:Ignorable="d" 
+      d:DesignHeight="856" d:DesignWidth="540"
+      Title="CollegesScreenPage">
+
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Колледжи"/>
+            <TextBox Text="Введите название колледжа" Name="CollegeSearchTb" GotFocus="CollegeSearchTb_GotFocus" LostFocus="CollegeSearchTb_LostFocus"/>
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding LogoPath}" Width="100" Height="100" Margin="0,0,10,0"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding SpecializationsCount, StringFormat='Количество специальностей: {0}'}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Page>

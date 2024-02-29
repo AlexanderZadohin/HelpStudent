@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +62,100 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\ClassFrame.cs" />
+    <Compile Include="Model\College.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CollegeSpecialization.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EducationalMaterial.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HelpStudentModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpStudentModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HelpStudentModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HelpStudentModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsCollege.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Specialization.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SubjectSpecialization.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SubjectStudies.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SubjectTask.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskProf.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserApp.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserSubject.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\BookScreenPage.xaml.cs">
+      <DependentUpon>BookScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\ChooseSubjectScreen.xaml.cs">
+      <DependentUpon>ChooseSubjectScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\CollegeSpecializationScreenPage.xaml.cs">
+      <DependentUpon>CollegeSpecializationScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\CollegesScreenPage.xaml.cs">
+      <DependentUpon>CollegesScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\CompletedTestScreenPage.xaml.cs">
+      <DependentUpon>CompletedTestScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\EnterScreenPage.xaml.cs">
+      <DependentUpon>EnterScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\LearningMatrialScreenPage.xaml.cs">
+      <DependentUpon>LearningMatrialScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\NewsArticlesScreenPage.xaml.cs">
+      <DependentUpon>NewsArticlesScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\NewsScreenPage.xaml.cs">
+      <DependentUpon>NewsScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\ProfileScreenPage.xaml.cs">
+      <DependentUpon>ProfileScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\RegistrationScreenPage.xaml.cs">
+      <DependentUpon>RegistrationScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\TestScreenPage.xaml.cs">
+      <DependentUpon>TestScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsePage\TestSubjectScreenPage.xaml.cs">
+      <DependentUpon>TestSubjectScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MainScreenWindow.xaml.cs">
+      <DependentUpon>MainScreenWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +168,62 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UsePage\BookScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\ChooseSubjectScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\CollegeSpecializationScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\CollegesScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\CompletedTestScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\EnterScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\LearningMatrialScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\NewsArticlesScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\NewsScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\ProfileScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\RegistrationScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\TestScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsePage\TestSubjectScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MainScreenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +243,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\HelpStudentModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HelpStudentModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\HelpStudentModel.edmx.diagram">
+      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,12 +260,50 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Resource\Fonts\" />
-    <Folder Include="Resource\Icons\" />
-    <Folder Include="Resource\Image\" />
-    <Folder Include="View\Page\" />
-    <Folder Include="View\Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Icons\Logotip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Icons\ActiveLnMaterial.png" />
+    <Resource Include="Resource\Icons\ActiveNewsIcon.png" />
+    <Resource Include="Resource\Icons\ActiveTestIcon.png" />
+    <Resource Include="Resource\Icons\CollegeIcon.png" />
+    <Resource Include="Resource\Icons\LnMaterialIcon.png" />
+    <Resource Include="Resource\Icons\NewsIcon.png" />
+    <Resource Include="Resource\Icons\ProfileIcon.png" />
+    <Resource Include="Resource\Icons\TestIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\BackButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\TestButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Icons\ActiveCollegeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Icons\ActiveProfileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\ChangeProfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\HelpStudentModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+      <LastGenOutput>HelpStudentModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\HelpStudentModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+      <LastGenOutput>HelpStudentModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

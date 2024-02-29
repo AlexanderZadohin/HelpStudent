@@ -1,14 +1,10 @@
-﻿using HelpStudent.Class;
-using HelpStudent.View.UsePage;
-using HelpStudent.View.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HelpStudent
+namespace HelpStudent.View.UsePage
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ProfileScreenPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProfileScreenPage : Page
     {
-        public MainWindow()
+        public ProfileScreenPage()
         {
             InitializeComponent();
-
-            ClassFrame.FrameMenu = MainScreen;
-            MainScreen.Navigate(new View.UsePage.EnterScreenPage());
         }
     }
 }
