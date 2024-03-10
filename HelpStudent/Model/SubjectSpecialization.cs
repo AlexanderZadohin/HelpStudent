@@ -15,7 +15,7 @@ namespace HelpStudent.Model
     public partial class SubjectSpecialization
     {
         public int id { get; set; }
-        public Nullable<int> idsubject { get; set; }
+        public Nullable<int> idSubject { get; set; }
         public Nullable<int> idSpecialization { get; set; }
     
         public virtual Specialization Specialization { get; set; }

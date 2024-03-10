@@ -23,6 +23,7 @@ namespace HelpStudent.Model
         public int id { get; set; }
         public string NameSpecialization { get; set; }
         public string Description { get; set; }
+        public string PhotoSprcialization { get; set; }
     
         public virtual ICollection<CollegeSpecialization> CollegeSpecialization { get; set; }
         public virtual ICollection<SubjectSpecialization> SubjectSpecialization { get; set; }

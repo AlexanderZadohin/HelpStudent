@@ -1,4 +1,5 @@
 ﻿using HelpStudent.Class;
+using HelpStudent.Model;
 using HelpStudent.View.UsePage;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,18 @@ namespace HelpStudent.View.Windows
 
             TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
+        }
+
+        private UserApp currentUser;
+        public MainScreenWindow(UserApp user)
+        {
+            InitializeComponent();
+
+            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage());
+
+            TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
+            TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
+            currentUser = user;
         }
 
         private void TestBarBtn_Click(object sender, RoutedEventArgs e)
@@ -97,7 +110,7 @@ namespace HelpStudent.View.Windows
 
         private void ProfileBarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainScreenFrm.Navigate(new View.UsePage.ProfileScreenPage());
+            MainScreenFrm.Navigate(new View.UsePage.ProfileScreenPage(currentUser));
 
             ProfileTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             ProfileImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveProfileIcon.png", UriKind.Relative));

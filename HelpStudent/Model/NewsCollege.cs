@@ -18,6 +18,7 @@ namespace HelpStudent.Model
         public Nullable<int> idCollege { get; set; }
         public string TextNews { get; set; }
         public string LinkNews { get; set; }
+        public string PhotoNews { get; set; }
     
         public virtual College College { get; set; }
     }

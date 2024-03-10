@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HelpStudent.View.UsePage
+namespace HelpStudent.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для ChooseSubjectScreen.xaml
+    /// Логика взаимодействия для ChangeProfile.xaml
     /// </summary>
-    public partial class ChooseSubjectScreen : Page
+    public partial class ChangeProfile : Window
     {
-        public ChooseSubjectScreen()
+        public ChangeProfile()
         {
             InitializeComponent();
         }

@@ -17,8 +17,7 @@
                      Name="FIOTbl"
                      GotFocus="FIOTbl_GotFocus"
                      LostFocus="FIOTbl_LostFocus"
-                     VerticalContentAlignment="Center"
-                     />
+                     VerticalContentAlignment="Center"/>
             <Grid>
                 <PasswordBox x:Name="PassworPb" 
                              Width="400" 

@@ -17,6 +17,7 @@ namespace HelpStudent.Model
         public College()
         {
             this.CollegeSpecialization = new HashSet<CollegeSpecialization>();
+            this.CollegeSubject = new HashSet<CollegeSubject>();
             this.NewsCollege = new HashSet<NewsCollege>();
         }
     
@@ -26,6 +27,7 @@ namespace HelpStudent.Model
         public string LogoCollege { get; set; }
     
         public virtual ICollection<CollegeSpecialization> CollegeSpecialization { get; set; }
+        public virtual ICollection<CollegeSubject> CollegeSubject { get; set; }
         public virtual ICollection<NewsCollege> NewsCollege { get; set; }
     }
 }

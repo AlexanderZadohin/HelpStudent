@@ -27,6 +27,7 @@ namespace HelpStudent.Model
     
         public DbSet<College> College { get; set; }
         public DbSet<CollegeSpecialization> CollegeSpecialization { get; set; }
+        public DbSet<CollegeSubject> CollegeSubject { get; set; }
         public DbSet<EducationalMaterial> EducationalMaterial { get; set; }
         public DbSet<NewsCollege> NewsCollege { get; set; }
         public DbSet<Specialization> Specialization { get; set; }

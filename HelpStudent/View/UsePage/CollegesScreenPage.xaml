@@ -11,22 +11,34 @@
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="Колледжи"/>
-            <TextBox Text="Введите название колледжа" Name="CollegeSearchTb" GotFocus="CollegeSearchTb_GotFocus" LostFocus="CollegeSearchTb_LostFocus"/>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <TextBox Text="Введите название колледжа" 
+                     Name="CollegeSearchTb" 
+                     GotFocus="CollegeSearchTb_GotFocus" 
+                     LostFocus="CollegeSearchTb_LostFocus"
+                     Height="50"
+                     VerticalContentAlignment="Center"
+                     TextAlignment="Center"
+                     TextChanged="CollegeSearchTb_TextChanged"/>
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" 
+                     Background="{x:Null}" 
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                     Name="CollegeLb" Height="735">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding LogoPath}" Width="100" Height="100" Margin="0,0,10,0"/>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding SpecializationsCount, StringFormat='Количество специальностей: {0}'}"/>
-                                </StackPanel>
+                        <StackPanel Width="475" Orientation="Horizontal" Margin="0 10 10 10" Background="{StaticResource Secondcolor}">
+                            <Image Source="{Binding LogoCollege}" Width="80" Height="80" Margin="10"/>
+                            <StackPanel Width="380">
+                                <TextBlock Text="{Binding NameCollege}" FontWeight="Bold" FontSize="20"/>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="15" Margin="0 0 50 0"/>
+                                <TextBlock Text="{Binding SpecializationsCount, StringFormat='Количество специальностей: {0}'}" TextWrapping="Wrap"/>
                             </StackPanel>
-                        </Border>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbcstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
         </StackPanel>
     </Grid>

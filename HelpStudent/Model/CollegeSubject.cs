@@ -12,16 +12,13 @@ namespace HelpStudent.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class EducationalMaterial
+    public partial class CollegeSubject
     {
         public int id { get; set; }
+        public Nullable<int> idCollege { get; set; }
         public Nullable<int> idSubject { get; set; }
-        public string NameBook { get; set; }
-        public string Description { get; set; }
-        public string LinkBook { get; set; }
-        public string AuthorBook { get; set; }
-        public string PhotoBook { get; set; }
     
+        public virtual College College { get; set; }
         public virtual SubjectStudies SubjectStudies { get; set; }
     }
 }

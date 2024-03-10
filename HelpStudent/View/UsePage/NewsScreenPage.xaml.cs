@@ -23,6 +23,13 @@ namespace HelpStudent.View.UsePage
         public NewsScreenPage()
         {
             InitializeComponent();
+
+            NewsLb.ItemsSource = App.context.NewsCollege.ToList();
+        }
+
+        private void NewsLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

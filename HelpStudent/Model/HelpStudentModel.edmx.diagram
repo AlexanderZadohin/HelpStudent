@@ -4,29 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a4f824403b1e4924a8de05cb8d2f83c3" Name="Diagram1">
-        <EntityTypeShape EntityType="DiplomAppWorkModel.College" Width="1.5" PointX="8.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.CollegeSpecialization" Width="1.5" PointX="11" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.EducationalMaterial" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.NewsCollege" Width="1.5" PointX="11" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.Specialization" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectSpecialization" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectStudies" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectTask" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.TaskProf" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.UserApp" Width="1.5" PointX="3.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiplomAppWorkModel.UserSubject" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSpecialization_College" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_NewsCollege_College" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSpecialization_Specialization" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_EducationalMaterial_SubjectStudies" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectSpecialization_Specialization" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectSpecialization_SubjectStudies" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectTask_SubjectStudies" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_UserSubject_SubjectStudies" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectTask_TaskProf" ManuallyRouted="false" />
-        <AssociationConnector Association="DiplomAppWorkModel.FK_UserSubject_UserApp" ManuallyRouted="false" />
+      <Diagram DiagramId="a4f824403b1e4924a8de05cb8d2f83c3" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="DiplomAppWorkModel.College" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.CollegeSpecialization" Width="1.5" PointX="6" PointY="2.25" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.CollegeSubject" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.EducationalMaterial" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.NewsCollege" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.Specialization" Width="1.5" PointX="3.75" PointY="1.125" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectSpecialization" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectStudies" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.SubjectTask" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.TaskProf" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.UserApp" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="DiplomAppWorkModel.UserSubject" Width="1.5" PointX="3" PointY="7.25" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSpecialization_College" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSubject_College" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_NewsCollege_College" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSpecialization_Specialization" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_CollegeSubject_SubjectStudies" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_EducationalMaterial_SubjectStudies" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectSpecialization_Specialization" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectSpecialization_SubjectStudies" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectTask_SubjectStudies" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_UserSubject_SubjectStudies" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_SubjectTask_TaskProf" />
+        <AssociationConnector Association="DiplomAppWorkModel.FK_UserSubject_UserApp" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -38,6 +38,7 @@
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -67,6 +68,9 @@
       <DependentUpon>HelpStudentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CollegeSpecialization.cs">
+      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CollegeSubject.cs">
       <DependentUpon>HelpStudentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\EducationalMaterial.cs">
@@ -117,9 +121,6 @@
     <Compile Include="View\UsePage\BookScreenPage.xaml.cs">
       <DependentUpon>BookScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UsePage\ChooseSubjectScreen.xaml.cs">
-      <DependentUpon>ChooseSubjectScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UsePage\CollegeSpecializationScreenPage.xaml.cs">
       <DependentUpon>CollegeSpecializationScreenPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +154,9 @@
     <Compile Include="View\UsePage\TestSubjectScreenPage.xaml.cs">
       <DependentUpon>TestSubjectScreenPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\ChangeProfile.xaml.cs">
+      <DependentUpon>ChangeProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\MainScreenWindow.xaml.cs">
       <DependentUpon>MainScreenWindow.xaml</DependentUpon>
     </Compile>
@@ -169,10 +173,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\UsePage\BookScreenPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UsePage\ChooseSubjectScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UsePage\TestSubjectScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ChangeProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

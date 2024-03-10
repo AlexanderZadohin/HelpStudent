@@ -6,32 +6,37 @@
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
       d:DesignHeight="856" d:DesignWidth="540"
-      Title="BookScreenPage">
-
+      Title="BookScreenPage"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Grid>
-        <StackPanel Margin="20">
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListBox.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate>
-                                    <TextBlock FontWeight="Bold"/>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListBox.GroupStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5">
-                                <StackPanel>
-                                    <Image Source="{Binding ImagePath}" Width="100" Height="100"/>
-                                    <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding Author}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+        <StackPanel Margin="20" Grid.RowSpan="2">
+            <TextBlock Text="Учебный материал"/>
+            <ComboBox Name="SubjectCmb">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding SubjectName}" Foreground="Black"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ListBox Margin="5" Name="BookMaterialLb" Background="{x:Null}" 
+         ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+         d:ItemsSource="{d:SampleData ItemCount=5}" Height="730">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Width="500" Height="750"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="15" HorizontalAlignment="Center" Background="{StaticResource Secondcolor}">
+                            <Image Margin="20" Source="{Binding PhotoBook}" Width="100" Height="150" Stretch="UniformToFill"/>
+                            <TextBlock TextAlignment="Center" Text="{Binding NameBook}" Width="200" FontSize="15" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <TextBlock Text="{Binding AuthorBook}" Margin="0,2,0,0" Width="180" Height="46"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </StackPanel>
     </Grid>
 </Page>

@@ -49,7 +49,11 @@ namespace HelpStudent.View.UsePage
 
         private void FIOTbl_GotFocus(object sender, RoutedEventArgs e)
         {
-            FIOTbl.Text = "";
+            if(FIOTbl.Text == "ФИО")
+            {
+
+                FIOTbl.Text = "";
+            }
         }
 
         private void FIOTbl_LostFocus(object sender, RoutedEventArgs e)
@@ -73,12 +77,12 @@ namespace HelpStudent.View.UsePage
 
                 UserApp userApp = App.context.UserApp.FirstOrDefault(u =>
                     u.Password == PassworPb.Password &&
-                    u.SecondName == lastName &&
+                    u.SurName == lastName &&
                     u.FirstName == firstName &&
-                    u.SurName == middleName);
+                    u.SecondName == middleName);
                 if (userApp != null)
                 {
-                    MainScreenWindow mainScreenWindow = new MainScreenWindow();
+                    MainScreenWindow mainScreenWindow = new MainScreenWindow(userApp);
                     mainScreenWindow.Show();
 
                     Window mainWindow = Window.GetWindow(this);

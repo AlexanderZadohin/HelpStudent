@@ -14,20 +14,34 @@
             Эти тесты созданы чтобы помочь вам с определением профессионального направления и выбором СПО
             </TextBlock>
             <TextBlock Text="Первичный предмет:" Padding="5"/>
-            <ListBox x:Name="FirstSubjectLsb" Height="250" Background="{x:Null}" Margin="5">
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     x:Name="FirstSubjectLsb" 
+                     Height="250" 
+                     Background="{x:Null}" 
+                     Margin="5" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <CheckBox Content="{Binding SubjectName}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
             <TextBlock Text="Вторичный предмет:" Padding="5"/>
-            <ListBox x:Name="SecondSubjectLsb" Height="250" Background="{x:Null}" Margin="5">
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                     x:Name="SecondSubjectLsb" 
+                     Height="250" 
+                     Background="{x:Null}" 
+                     Margin="5">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <CheckBox Content="{Binding SubjectName}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
             <Button Margin="3 5">
                 <Image Source="/Resource/Image/TestButton.png" />
