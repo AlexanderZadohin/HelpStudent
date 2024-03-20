@@ -1,19 +1,7 @@
 ﻿using HelpStudent.Class;
 using HelpStudent.View.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.UsePage
 {
@@ -85,7 +73,7 @@ namespace HelpStudent.View.UsePage
         private void RegistrationBtn_Click(object sender, RoutedEventArgs e)
         {
             string mes = "";
-            if (FIOTb.Text == "ФИО")
+            if (FIOTb.Text == "Иванов Иван Иванович")
                 mes += "Заполните ФИО!\n";
             if (EmailTb.Text == "Email")
                 mes += "Заполните Email!\n";

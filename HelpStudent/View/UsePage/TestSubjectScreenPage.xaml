@@ -41,7 +41,7 @@
                     <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
                 </ListBox.Resources>
             </ListBox>
-            <Button Margin="3 5">
+            <Button Name="GoTestBtn" Click="GoTestBtn_Click" Margin="3 5">
                 <Image Source="/Resource/Image/TestButton.png" />
             </Button>
         </StackPanel>

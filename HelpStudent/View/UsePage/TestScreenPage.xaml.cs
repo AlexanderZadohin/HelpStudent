@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HelpStudent.Model;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.UsePage
 {
@@ -20,14 +11,24 @@ namespace HelpStudent.View.UsePage
     /// </summary>
     public partial class TestScreenPage : Page
     {
-        public TestScreenPage()
+        private UserApp currentUser;
+        public TestScreenPage(UserApp user)
         {
             InitializeComponent();
+
+            TestLb.ItemsSource = App.context.TaskProf.ToList(); 
+            
+            currentUser = user;
         }
 
-        private void QuestionLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.GoBack();
+        }
 
+        private void GiveAnswerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new View.UsePage.CompletedTestScreenPage(currentUser));
         }
     }
 }

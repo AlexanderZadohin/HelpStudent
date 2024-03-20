@@ -1,19 +1,8 @@
-﻿using HelpStudent.Class;
-using HelpStudent.Model;
-using HelpStudent.View.UsePage;
+﻿using HelpStudent.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.Windows
 {
@@ -26,18 +15,18 @@ namespace HelpStudent.View.Windows
         {
             InitializeComponent();
 
-            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage());
+            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage(currentUser));
 
             TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
         }
 
-        private UserApp currentUser;
+        public UserApp currentUser;
         public MainScreenWindow(UserApp user)
         {
             InitializeComponent();
 
-            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage());
+            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage(currentUser));
 
             TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
@@ -46,7 +35,7 @@ namespace HelpStudent.View.Windows
 
         private void TestBarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage());
+            MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage(currentUser));
 
             TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));

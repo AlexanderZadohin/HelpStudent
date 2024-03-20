@@ -25,6 +25,7 @@ namespace HelpStudent.Model
         public string NameCollege { get; set; }
         public string Description { get; set; }
         public string LogoCollege { get; set; }
+        public Nullable<int> AmountSpecialization { get; set; }
     
         public virtual ICollection<CollegeSpecialization> CollegeSpecialization { get; set; }
         public virtual ICollection<CollegeSubject> CollegeSubject { get; set; }

@@ -115,9 +115,6 @@
     <Compile Include="Model\UserApp.cs">
       <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\UserSubject.cs">
-      <DependentUpon>DiplomModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="View\UsePage\BookScreenPage.xaml.cs">
       <DependentUpon>BookScreenPage.xaml</DependentUpon>
     </Compile>

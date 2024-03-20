@@ -10,15 +10,20 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="ФИО"
+                   Margin="10 0 10 0"/>
             <TextBox Width="400" 
                      Height="65" 
-                     Margin="10 20" 
-                     Text="ФИО"
+                     Margin="0 0 0 20" 
+                     Text="Иванов Иван Иванович"
                      Name="FIOTbl"
                      GotFocus="FIOTbl_GotFocus"
                      LostFocus="FIOTbl_LostFocus"
                      VerticalContentAlignment="Center"/>
-            <Grid>
+            
+            <Grid Height="143">
+                <Label Content="Пароль"
+                   Margin="10,0,10,99"/>
                 <PasswordBox x:Name="PassworPb" 
                              Width="400" 
                              Height="65" 
@@ -26,7 +31,7 @@
                              LostFocus="passwordBox_LostFocus"
                              GotFocus="passwordBox_GotFocus"
                              VerticalContentAlignment="Center"/>
-                <Label x:Name="textBox" Content="Пароль" Margin="10,30,309,30"/>
+                <Label x:Name="textBox" Content="*****" Margin="10,49,309,53"/>
             </Grid>
 
             <Button Width="300" 

@@ -37,6 +37,5 @@ namespace HelpStudent.Model
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TaskProf> TaskProf { get; set; }
         public DbSet<UserApp> UserApp { get; set; }
-        public DbSet<UserSubject> UserSubject { get; set; }
     }
 }

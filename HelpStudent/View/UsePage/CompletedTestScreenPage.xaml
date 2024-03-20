@@ -10,31 +10,31 @@
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Поздравляю вы прошли тестирование!!!
-Вам ближе"/>
-            <Button Width="300" HorizontalAlignment="Left">
+            <TextBlock x:Name="CongratulationsTb" Padding="0 0 0 10" Text="{Binding SubjectStudies.AssumedProfession, StringFormat='Поздравляем, вы прошли тестирование! Вам подходит профессия: {0}'}"/>
+            <Button Width="300" x:Name="GoBackBtn" Click="GoBackBtn_Click" HorizontalAlignment="Left">
                 <Image Source="/Resource/Image/BackButton.png" />
             </Button>
-            <TextBlock Text="Вам могут подойти такие колледжи со специальностью как:"/>
-            <ListBox Background="{x:Null}" Name="СollegeLи" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}" Height="615">
+            <TextBlock Padding="0 10 0 10" Text="Вам могут подойти такие колледжи со специальностью как:"/>
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" 
+                     Background="{x:Null}" 
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                     Name="CollegeLb" Height="615">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="LightGray" BorderThickness="1" Margin="5" Padding="5">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="{Binding LogoPath}" Width="100" Height="100" Margin="0,0,10,0"/>
-                                <StackPanel Grid.Column="1">
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding Specialization}" FontStyle="Italic"/>
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
+                        <StackPanel Width="475" Orientation="Horizontal" Margin="0 10 10 10" Background="{StaticResource Secondcolor}">
+                            <Image Source="{Binding LogoCollege}" Width="80" Height="80" Margin="10"/>
+                            <StackPanel Width="380">
+                                <TextBlock Text="{Binding NameCollege}" FontWeight="Bold" FontSize="20"/>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="15" Margin="0 0 50 0"/>
+                                <TextBlock Text="{Binding AmountSpecialization, StringFormat={}Количество специальностей: {0}}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbcstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
         </StackPanel>
     </Grid>

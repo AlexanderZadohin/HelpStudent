@@ -1,18 +1,7 @@
-﻿using System;
+﻿using HelpStudent.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.UsePage
 {
@@ -21,12 +10,34 @@ namespace HelpStudent.View.UsePage
     /// </summary>
     public partial class BookScreenPage : Page
     {
+        List<SubjectStudies> subjectStudies = new List<SubjectStudies>();
         public BookScreenPage()
         {
             InitializeComponent();
 
             BookMaterialLb.ItemsSource = App.context.EducationalMaterial.ToList();
-            SubjectCmb.ItemsSource = App.context.SubjectStudies.ToList();
+
+            subjectStudies = App.context.SubjectStudies.ToList();
+
+            subjectStudies.Insert(0, new SubjectStudies() { SubjectName = "Все предметы" });
+
+            SubjectCmb.ItemsSource = subjectStudies;
+
+            SubjectCmb.SelectedValuePath = "id";
+
+        }
+
+        private void SubjectCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SubjectCmb.SelectedIndex == 0)
+            {
+                BookMaterialLb.ItemsSource = App.context.EducationalMaterial.ToList();
+            }
+            else
+            {
+                BookMaterialLb.ItemsSource = App.context.EducationalMaterial.Where(b => b.idSubject == SubjectCmb.SelectedIndex).ToList();
+
+            }
         }
     }
 }

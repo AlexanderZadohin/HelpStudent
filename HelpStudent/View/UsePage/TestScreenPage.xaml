@@ -11,20 +11,23 @@
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="Профтестирование"/>
-            <Button Width="300" HorizontalAlignment="Left">
+            <Button Width="300" x:Name="GoBackBtn" Click="GoBackBtn_Click" HorizontalAlignment="Left">
                 <Image Source="/Resource/Image/BackButton.png" />
             </Button>
             <ListBox d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Name="TestLb"
                      Background="{x:Null}" 
                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="650">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Height="300">
-                            <StackPanel>
-                                <Image/>
-                                <TextBox Text="Ввести ответ"/>
-                            </StackPanel>
+                        <Grid>
+                            <Border BorderBrush="Gray" BorderThickness="1">
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="{Binding Exercise}" Margin="0 0 0 10"/>
+                                    <TextBox Text="Ввести ответ" Margin="0 10 0 0"/>
+                                </StackPanel>
+                            </Border>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -32,7 +35,7 @@
                     <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
                 </ListBox.Resources>
             </ListBox>
-            <Button Content="Ответить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" />
+            <Button Name="GiveAnswerBtn" Click="GiveAnswerBtn_Click" Background="{StaticResource Secondcolor}" Width="200" Height="50" Content="Ответить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" />
 
         </StackPanel>
     </Grid>

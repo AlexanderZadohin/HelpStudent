@@ -2,19 +2,9 @@
 using HelpStudent.Model;
 using HelpStudent.View.Windows;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.UsePage
 {
@@ -49,7 +39,7 @@ namespace HelpStudent.View.UsePage
 
         private void FIOTbl_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(FIOTbl.Text == "ФИО")
+            if (FIOTbl.Text == "Иванов Иван Иванович")
             {
 
                 FIOTbl.Text = "";
@@ -60,7 +50,7 @@ namespace HelpStudent.View.UsePage
         {
             if (string.IsNullOrEmpty(FIOTbl.Text))
             {
-                FIOTbl.Text = "ФИО";
+                FIOTbl.Text = "Иванов Иван Иванович";
             }
         }
 

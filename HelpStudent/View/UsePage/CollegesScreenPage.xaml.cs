@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HelpStudent.View.UsePage
 {
@@ -30,7 +19,7 @@ namespace HelpStudent.View.UsePage
 
         private void CollegeSearchTb_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(CollegeSearchTb.Text == "Введите название колледжа")
+            if (CollegeSearchTb.Text == "Введите название колледжа")
             {
                 CollegeSearchTb.Text = string.Empty;
             }

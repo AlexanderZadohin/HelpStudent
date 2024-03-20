@@ -14,11 +14,6 @@ namespace HelpStudent.Model
     
     public partial class UserApp
     {
-        public UserApp()
-        {
-            this.UserSubject = new HashSet<UserSubject>();
-        }
-    
         public int id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -30,6 +25,5 @@ namespace HelpStudent.Model
         public Nullable<int> idFavoriteSubject { get; set; }
     
         public virtual SubjectStudies SubjectStudies { get; set; }
-        public virtual ICollection<UserSubject> UserSubject { get; set; }
     }
 }
