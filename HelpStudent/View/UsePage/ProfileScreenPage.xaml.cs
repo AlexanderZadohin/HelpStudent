@@ -27,6 +27,7 @@ namespace HelpStudent.View.UsePage
 
             FavoriteSubjectCmb.ItemsSource = App.context.SubjectStudies.ToList();
             FavoriteSubjectCmb.SelectedValuePath = "id";
+            FavoriteSubjectCmb.SelectedIndex = Convert.ToInt32(user.idFavoriteSubject-1);
 
 
             BitmapImage bitmap = new BitmapImage();

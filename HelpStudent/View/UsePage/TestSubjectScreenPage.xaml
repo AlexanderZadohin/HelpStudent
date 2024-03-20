@@ -17,8 +17,7 @@
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden"
                      x:Name="FirstSubjectLsb" 
                      Height="250" 
-                     Background="{x:Null}" 
-                     Margin="5" d:ItemsSource="{d:SampleData ItemCount=5}">
+                     Background="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <CheckBox Content="{Binding SubjectName}"/>
@@ -32,8 +31,7 @@
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                      x:Name="SecondSubjectLsb" 
                      Height="250" 
-                     Background="{x:Null}" 
-                     Margin="5">
+                     Background="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <CheckBox Content="{Binding SubjectName}"/>

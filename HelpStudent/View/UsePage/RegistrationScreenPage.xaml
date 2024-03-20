@@ -14,7 +14,7 @@
                      Height="65" 
                      Margin="10 20" 
                      Text="ФИО"
-                     Name="FIOTbl"
+                     Name="FIOTb"
                      GotFocus="FIOTbl_GotFocus"
                      LostFocus="FIOTbl_LostFocus"
                      VerticalContentAlignment="Center"
@@ -24,7 +24,7 @@
                      Height="65" 
                      Margin="10 20" 
                      Text="Email"
-                     Name="EmailTbl"
+                     Name="EmailTb"
                      GotFocus="EmailTbl_GotFocus"
                      LostFocus="EmailTbl_LostFocus"
                      VerticalContentAlignment="Center"
@@ -32,7 +32,7 @@
 
 
             <Grid>
-                <PasswordBox x:Name="passwordBox" 
+                <PasswordBox x:Name="PasswordPb" 
                              Width="400" 
                              Height="65" 
                              Margin="10 20" 
@@ -43,7 +43,7 @@
             </Grid>
 
             <Grid>
-                <PasswordBox x:Name="passwordBoxSec" 
+                <PasswordBox x:Name="PasswordPbSec" 
                              Width="400" 
                              Height="65" 
                              Margin="10 20" 

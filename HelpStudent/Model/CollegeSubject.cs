@@ -15,8 +15,8 @@ namespace HelpStudent.Model
     public partial class CollegeSubject
     {
         public int id { get; set; }
-        public Nullable<int> idCollege { get; set; }
-        public Nullable<int> idSubject { get; set; }
+        public int idCollege { get; set; }
+        public int idSubject { get; set; }
     
         public virtual College College { get; set; }
         public virtual SubjectStudies SubjectStudies { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище DiplomAppWorkModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DiplomAppWorkModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="College">
           <Key>
             <PropertyRef Name="id" />
@@ -27,8 +27,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCollege" Type="int" />
-          <Property Name="idSubject" Type="int" />
+          <Property Name="idCollege" Type="int" Nullable="false" />
+          <Property Name="idSubject" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EducationalMaterial">
           <Key>
@@ -74,13 +74,13 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SubjectTask">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idSubject" Type="int" />
           <Property Name="idTask" Type="int" />
         </EntityType>
@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Exercise" Type="nvarchar(max)" />
           <Property Name="Answer" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -114,6 +114,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="nvarchar" MaxLength="50" />
           <Property Name="PhotoProfile" Type="nvarchar(max)" />
+          <Property Name="idFavoriteSubject" Type="int" />
         </EntityType>
         <EntityType Name="UserSubject">
           <Key>
@@ -148,7 +149,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CollegeSubject_College">
-          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="College" Type="Self.College" Multiplicity="1" />
           <End Role="CollegeSubject" Type="Self.CollegeSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="College">
@@ -160,7 +161,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CollegeSubject_SubjectStudies">
-          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="1" />
           <End Role="CollegeSubject" Type="Self.CollegeSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
@@ -243,15 +244,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserSubject_SubjectStudies">
-          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="1" />
-          <End Role="UserSubject" Type="Self.UserSubject" Multiplicity="0..1" />
+        <Association Name="FK_UserApp_SubjectStudies">
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="UserApp" Type="Self.UserApp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectStudies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserApp">
+              <PropertyRef Name="idFavoriteSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubject_SubjectStudies1">
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="UserSubject" Type="Self.UserSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="UserSubject">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="idSubject" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -321,7 +334,11 @@
             <End Role="TaskProf" EntitySet="TaskProf" />
             <End Role="SubjectTask" EntitySet="SubjectTask" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserSubject_SubjectStudies" Association="Self.FK_UserSubject_SubjectStudies">
+          <AssociationSet Name="FK_UserApp_SubjectStudies" Association="Self.FK_UserApp_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="UserApp" EntitySet="UserApp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubject_SubjectStudies1" Association="Self.FK_UserSubject_SubjectStudies1">
             <End Role="SubjectStudies" EntitySet="SubjectStudies" />
             <End Role="UserSubject" EntitySet="UserSubject" />
           </AssociationSet>
@@ -330,73 +347,11 @@
             <End Role="UserSubject" EntitySet="UserSubject" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiplomAppWorkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DiplomAppWorkEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="College" EntityType="DiplomAppWorkModel.College" />
-          <EntitySet Name="CollegeSpecialization" EntityType="DiplomAppWorkModel.CollegeSpecialization" />
-          <EntitySet Name="CollegeSubject" EntityType="DiplomAppWorkModel.CollegeSubject" />
-          <EntitySet Name="EducationalMaterial" EntityType="DiplomAppWorkModel.EducationalMaterial" />
-          <EntitySet Name="NewsCollege" EntityType="DiplomAppWorkModel.NewsCollege" />
-          <EntitySet Name="Specialization" EntityType="DiplomAppWorkModel.Specialization" />
-          <EntitySet Name="SubjectSpecialization" EntityType="DiplomAppWorkModel.SubjectSpecialization" />
-          <EntitySet Name="SubjectStudies" EntityType="DiplomAppWorkModel.SubjectStudies" />
-          <EntitySet Name="SubjectTask" EntityType="DiplomAppWorkModel.SubjectTask" />
-          <EntitySet Name="sysdiagrams" EntityType="DiplomAppWorkModel.sysdiagrams" />
-          <EntitySet Name="TaskProf" EntityType="DiplomAppWorkModel.TaskProf" />
-          <EntitySet Name="UserApp" EntityType="DiplomAppWorkModel.UserApp" />
-          <EntitySet Name="UserSubject" EntityType="DiplomAppWorkModel.UserSubject" />
-          <AssociationSet Name="FK_CollegeSpecialization_College" Association="DiplomAppWorkModel.FK_CollegeSpecialization_College">
-            <End Role="College" EntitySet="College" />
-            <End Role="CollegeSpecialization" EntitySet="CollegeSpecialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollegeSubject_College" Association="DiplomAppWorkModel.FK_CollegeSubject_College">
-            <End Role="College" EntitySet="College" />
-            <End Role="CollegeSubject" EntitySet="CollegeSubject" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsCollege_College" Association="DiplomAppWorkModel.FK_NewsCollege_College">
-            <End Role="College" EntitySet="College" />
-            <End Role="NewsCollege" EntitySet="NewsCollege" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollegeSpecialization_Specialization" Association="DiplomAppWorkModel.FK_CollegeSpecialization_Specialization">
-            <End Role="Specialization" EntitySet="Specialization" />
-            <End Role="CollegeSpecialization" EntitySet="CollegeSpecialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollegeSubject_SubjectStudies" Association="DiplomAppWorkModel.FK_CollegeSubject_SubjectStudies">
-            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
-            <End Role="CollegeSubject" EntitySet="CollegeSubject" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EducationalMaterial_SubjectStudies" Association="DiplomAppWorkModel.FK_EducationalMaterial_SubjectStudies">
-            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
-            <End Role="EducationalMaterial" EntitySet="EducationalMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubjectSpecialization_Specialization" Association="DiplomAppWorkModel.FK_SubjectSpecialization_Specialization">
-            <End Role="Specialization" EntitySet="Specialization" />
-            <End Role="SubjectSpecialization" EntitySet="SubjectSpecialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubjectSpecialization_SubjectStudies" Association="DiplomAppWorkModel.FK_SubjectSpecialization_SubjectStudies">
-            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
-            <End Role="SubjectSpecialization" EntitySet="SubjectSpecialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubjectTask_SubjectStudies" Association="DiplomAppWorkModel.FK_SubjectTask_SubjectStudies">
-            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
-            <End Role="SubjectTask" EntitySet="SubjectTask" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserSubject_SubjectStudies" Association="DiplomAppWorkModel.FK_UserSubject_SubjectStudies">
-            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
-            <End Role="UserSubject" EntitySet="UserSubject" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubjectTask_TaskProf" Association="DiplomAppWorkModel.FK_SubjectTask_TaskProf">
-            <End Role="TaskProf" EntitySet="TaskProf" />
-            <End Role="SubjectTask" EntitySet="SubjectTask" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserSubject_UserApp" Association="DiplomAppWorkModel.FK_UserSubject_UserApp">
-            <End Role="UserApp" EntitySet="UserApp" />
-            <End Role="UserSubject" EntitySet="UserSubject" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="College">
           <Key>
             <PropertyRef Name="id" />
@@ -405,9 +360,9 @@
           <Property Name="NameCollege" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LogoCollege" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CollegeSpecialization" Relationship="DiplomAppWorkModel.FK_CollegeSpecialization_College" FromRole="College" ToRole="CollegeSpecialization" />
-          <NavigationProperty Name="CollegeSubject" Relationship="DiplomAppWorkModel.FK_CollegeSubject_College" FromRole="College" ToRole="CollegeSubject" />
-          <NavigationProperty Name="NewsCollege" Relationship="DiplomAppWorkModel.FK_NewsCollege_College" FromRole="College" ToRole="NewsCollege" />
+          <NavigationProperty Name="CollegeSpecialization" Relationship="Self.FK_CollegeSpecialization_College" FromRole="College" ToRole="CollegeSpecialization" />
+          <NavigationProperty Name="CollegeSubject" Relationship="Self.FK_CollegeSubject_College" FromRole="College" ToRole="CollegeSubject" />
+          <NavigationProperty Name="NewsCollege" Relationship="Self.FK_NewsCollege_College" FromRole="College" ToRole="NewsCollege" />
         </EntityType>
         <EntityType Name="CollegeSpecialization">
           <Key>
@@ -416,18 +371,18 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCollege" Type="Int32" />
           <Property Name="idSpecialization" Type="Int32" />
-          <NavigationProperty Name="College" Relationship="DiplomAppWorkModel.FK_CollegeSpecialization_College" FromRole="CollegeSpecialization" ToRole="College" />
-          <NavigationProperty Name="Specialization" Relationship="DiplomAppWorkModel.FK_CollegeSpecialization_Specialization" FromRole="CollegeSpecialization" ToRole="Specialization" />
+          <NavigationProperty Name="College" Relationship="Self.FK_CollegeSpecialization_College" FromRole="CollegeSpecialization" ToRole="College" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK_CollegeSpecialization_Specialization" FromRole="CollegeSpecialization" ToRole="Specialization" />
         </EntityType>
         <EntityType Name="CollegeSubject">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCollege" Type="Int32" />
-          <Property Name="idSubject" Type="Int32" />
-          <NavigationProperty Name="College" Relationship="DiplomAppWorkModel.FK_CollegeSubject_College" FromRole="CollegeSubject" ToRole="College" />
-          <NavigationProperty Name="SubjectStudies" Relationship="DiplomAppWorkModel.FK_CollegeSubject_SubjectStudies" FromRole="CollegeSubject" ToRole="SubjectStudies" />
+          <Property Name="idCollege" Type="Int32" Nullable="false" />
+          <Property Name="idSubject" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="College" Relationship="Self.FK_CollegeSubject_College" FromRole="CollegeSubject" ToRole="College" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_CollegeSubject_SubjectStudies" FromRole="CollegeSubject" ToRole="SubjectStudies" />
         </EntityType>
         <EntityType Name="EducationalMaterial">
           <Key>
@@ -440,7 +395,7 @@
           <Property Name="LinkBook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AuthorBook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhotoBook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SubjectStudies" Relationship="DiplomAppWorkModel.FK_EducationalMaterial_SubjectStudies" FromRole="EducationalMaterial" ToRole="SubjectStudies" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_EducationalMaterial_SubjectStudies" FromRole="EducationalMaterial" ToRole="SubjectStudies" />
         </EntityType>
         <EntityType Name="NewsCollege">
           <Key>
@@ -451,7 +406,7 @@
           <Property Name="TextNews" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LinkNews" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoNews" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="College" Relationship="DiplomAppWorkModel.FK_NewsCollege_College" FromRole="NewsCollege" ToRole="College" />
+          <NavigationProperty Name="College" Relationship="Self.FK_NewsCollege_College" FromRole="NewsCollege" ToRole="College" />
         </EntityType>
         <EntityType Name="Specialization">
           <Key>
@@ -461,8 +416,8 @@
           <Property Name="NameSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoSprcialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CollegeSpecialization" Relationship="DiplomAppWorkModel.FK_CollegeSpecialization_Specialization" FromRole="Specialization" ToRole="CollegeSpecialization" />
-          <NavigationProperty Name="SubjectSpecialization" Relationship="DiplomAppWorkModel.FK_SubjectSpecialization_Specialization" FromRole="Specialization" ToRole="SubjectSpecialization" />
+          <NavigationProperty Name="CollegeSpecialization" Relationship="Self.FK_CollegeSpecialization_Specialization" FromRole="Specialization" ToRole="CollegeSpecialization" />
+          <NavigationProperty Name="SubjectSpecialization" Relationship="Self.FK_SubjectSpecialization_Specialization" FromRole="Specialization" ToRole="SubjectSpecialization" />
         </EntityType>
         <EntityType Name="SubjectSpecialization">
           <Key>
@@ -471,36 +426,37 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idSubject" Type="Int32" />
           <Property Name="idSpecialization" Type="Int32" />
-          <NavigationProperty Name="Specialization" Relationship="DiplomAppWorkModel.FK_SubjectSpecialization_Specialization" FromRole="SubjectSpecialization" ToRole="Specialization" />
-          <NavigationProperty Name="SubjectStudies" Relationship="DiplomAppWorkModel.FK_SubjectSpecialization_SubjectStudies" FromRole="SubjectSpecialization" ToRole="SubjectStudies" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK_SubjectSpecialization_Specialization" FromRole="SubjectSpecialization" ToRole="Specialization" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_SubjectSpecialization_SubjectStudies" FromRole="SubjectSpecialization" ToRole="SubjectStudies" />
         </EntityType>
         <EntityType Name="SubjectStudies">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CollegeSubject" Relationship="DiplomAppWorkModel.FK_CollegeSubject_SubjectStudies" FromRole="SubjectStudies" ToRole="CollegeSubject" />
-          <NavigationProperty Name="EducationalMaterial" Relationship="DiplomAppWorkModel.FK_EducationalMaterial_SubjectStudies" FromRole="SubjectStudies" ToRole="EducationalMaterial" />
-          <NavigationProperty Name="SubjectSpecialization" Relationship="DiplomAppWorkModel.FK_SubjectSpecialization_SubjectStudies" FromRole="SubjectStudies" ToRole="SubjectSpecialization" />
-          <NavigationProperty Name="SubjectTask" Relationship="DiplomAppWorkModel.FK_SubjectTask_SubjectStudies" FromRole="SubjectStudies" ToRole="SubjectTask" />
-          <NavigationProperty Name="UserSubject" Relationship="DiplomAppWorkModel.FK_UserSubject_SubjectStudies" FromRole="SubjectStudies" ToRole="UserSubject" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CollegeSubject" Relationship="Self.FK_CollegeSubject_SubjectStudies" FromRole="SubjectStudies" ToRole="CollegeSubject" />
+          <NavigationProperty Name="EducationalMaterial" Relationship="Self.FK_EducationalMaterial_SubjectStudies" FromRole="SubjectStudies" ToRole="EducationalMaterial" />
+          <NavigationProperty Name="SubjectSpecialization" Relationship="Self.FK_SubjectSpecialization_SubjectStudies" FromRole="SubjectStudies" ToRole="SubjectSpecialization" />
+          <NavigationProperty Name="SubjectTask" Relationship="Self.FK_SubjectTask_SubjectStudies" FromRole="SubjectStudies" ToRole="SubjectTask" />
+          <NavigationProperty Name="UserApp" Relationship="Self.FK_UserApp_SubjectStudies" FromRole="SubjectStudies" ToRole="UserApp" />
+          <NavigationProperty Name="UserSubject" Relationship="Self.FK_UserSubject_SubjectStudies1" FromRole="SubjectStudies" ToRole="UserSubject" />
         </EntityType>
         <EntityType Name="SubjectTask">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idSubject" Type="Int32" />
           <Property Name="idTask" Type="Int32" />
-          <NavigationProperty Name="SubjectStudies" Relationship="DiplomAppWorkModel.FK_SubjectTask_SubjectStudies" FromRole="SubjectTask" ToRole="SubjectStudies" />
-          <NavigationProperty Name="TaskProf" Relationship="DiplomAppWorkModel.FK_SubjectTask_TaskProf" FromRole="SubjectTask" ToRole="TaskProf" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_SubjectTask_SubjectStudies" FromRole="SubjectTask" ToRole="SubjectStudies" />
+          <NavigationProperty Name="TaskProf" Relationship="Self.FK_SubjectTask_TaskProf" FromRole="SubjectTask" ToRole="TaskProf" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -510,24 +466,26 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Exercise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SubjectTask" Relationship="DiplomAppWorkModel.FK_SubjectTask_TaskProf" FromRole="TaskProf" ToRole="SubjectTask" />
+          <NavigationProperty Name="SubjectTask" Relationship="Self.FK_SubjectTask_TaskProf" FromRole="TaskProf" ToRole="SubjectTask" />
         </EntityType>
         <EntityType Name="UserApp">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SurName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhotoProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserSubject" Relationship="DiplomAppWorkModel.FK_UserSubject_UserApp" FromRole="UserApp" ToRole="UserSubject" />
+          <Property Name="idFavoriteSubject" Type="Int32" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_UserApp_SubjectStudies" FromRole="UserApp" ToRole="SubjectStudies" />
+          <NavigationProperty Name="UserSubject" Relationship="Self.FK_UserSubject_UserApp" FromRole="UserApp" ToRole="UserSubject" />
         </EntityType>
         <EntityType Name="UserSubject">
           <Key>
@@ -536,12 +494,12 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="idSubject" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
-          <NavigationProperty Name="SubjectStudies" Relationship="DiplomAppWorkModel.FK_UserSubject_SubjectStudies" FromRole="UserSubject" ToRole="SubjectStudies" />
-          <NavigationProperty Name="UserApp" Relationship="DiplomAppWorkModel.FK_UserSubject_UserApp" FromRole="UserSubject" ToRole="UserApp" />
+          <NavigationProperty Name="SubjectStudies" Relationship="Self.FK_UserSubject_SubjectStudies1" FromRole="UserSubject" ToRole="SubjectStudies" />
+          <NavigationProperty Name="UserApp" Relationship="Self.FK_UserSubject_UserApp" FromRole="UserSubject" ToRole="UserApp" />
         </EntityType>
         <Association Name="FK_CollegeSpecialization_College">
-          <End Type="DiplomAppWorkModel.College" Role="College" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.CollegeSpecialization" Role="CollegeSpecialization" Multiplicity="*" />
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="CollegeSpecialization" Type="Self.CollegeSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="College">
               <PropertyRef Name="id" />
@@ -552,8 +510,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CollegeSubject_College">
-          <End Type="DiplomAppWorkModel.College" Role="College" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.CollegeSubject" Role="CollegeSubject" Multiplicity="*" />
+          <End Role="College" Type="Self.College" Multiplicity="1" />
+          <End Role="CollegeSubject" Type="Self.CollegeSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="College">
               <PropertyRef Name="id" />
@@ -564,8 +522,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NewsCollege_College">
-          <End Type="DiplomAppWorkModel.College" Role="College" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.NewsCollege" Role="NewsCollege" Multiplicity="*" />
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="NewsCollege" Type="Self.NewsCollege" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="College">
               <PropertyRef Name="id" />
@@ -576,8 +534,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CollegeSpecialization_Specialization">
-          <End Type="DiplomAppWorkModel.Specialization" Role="Specialization" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.CollegeSpecialization" Role="CollegeSpecialization" Multiplicity="*" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="0..1" />
+          <End Role="CollegeSpecialization" Type="Self.CollegeSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Specialization">
               <PropertyRef Name="id" />
@@ -588,8 +546,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CollegeSubject_SubjectStudies">
-          <End Type="DiplomAppWorkModel.SubjectStudies" Role="SubjectStudies" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.CollegeSubject" Role="CollegeSubject" Multiplicity="*" />
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="1" />
+          <End Role="CollegeSubject" Type="Self.CollegeSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
@@ -600,8 +558,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EducationalMaterial_SubjectStudies">
-          <End Type="DiplomAppWorkModel.SubjectStudies" Role="SubjectStudies" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.EducationalMaterial" Role="EducationalMaterial" Multiplicity="*" />
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="EducationalMaterial" Type="Self.EducationalMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
@@ -612,8 +570,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubjectSpecialization_Specialization">
-          <End Type="DiplomAppWorkModel.Specialization" Role="Specialization" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.SubjectSpecialization" Role="SubjectSpecialization" Multiplicity="*" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="0..1" />
+          <End Role="SubjectSpecialization" Type="Self.SubjectSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Specialization">
               <PropertyRef Name="id" />
@@ -624,8 +582,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubjectSpecialization_SubjectStudies">
-          <End Type="DiplomAppWorkModel.SubjectStudies" Role="SubjectStudies" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.SubjectSpecialization" Role="SubjectSpecialization" Multiplicity="*" />
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="SubjectSpecialization" Type="Self.SubjectSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
@@ -636,8 +594,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubjectTask_SubjectStudies">
-          <End Type="DiplomAppWorkModel.SubjectStudies" Role="SubjectStudies" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.SubjectTask" Role="SubjectTask" Multiplicity="*" />
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="SubjectTask" Type="Self.SubjectTask" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
@@ -647,21 +605,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserSubject_SubjectStudies">
-          <End Type="DiplomAppWorkModel.SubjectStudies" Role="SubjectStudies" Multiplicity="1" />
-          <End Type="DiplomAppWorkModel.UserSubject" Role="UserSubject" Multiplicity="0..1" />
+        <Association Name="FK_UserApp_SubjectStudies">
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="UserApp" Type="Self.UserApp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectStudies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserApp">
+              <PropertyRef Name="idFavoriteSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubject_SubjectStudies1">
+          <End Role="SubjectStudies" Type="Self.SubjectStudies" Multiplicity="0..1" />
+          <End Role="UserSubject" Type="Self.UserSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SubjectStudies">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="UserSubject">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="idSubject" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubjectTask_TaskProf">
-          <End Type="DiplomAppWorkModel.TaskProf" Role="TaskProf" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.SubjectTask" Role="SubjectTask" Multiplicity="*" />
+          <End Role="TaskProf" Type="Self.TaskProf" Multiplicity="0..1" />
+          <End Role="SubjectTask" Type="Self.SubjectTask" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaskProf">
               <PropertyRef Name="id" />
@@ -672,8 +642,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserSubject_UserApp">
-          <End Type="DiplomAppWorkModel.UserApp" Role="UserApp" Multiplicity="0..1" />
-          <End Type="DiplomAppWorkModel.UserSubject" Role="UserSubject" Multiplicity="*" />
+          <End Role="UserApp" Type="Self.UserApp" Multiplicity="0..1" />
+          <End Role="UserSubject" Type="Self.UserSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserApp">
               <PropertyRef Name="id" />
@@ -683,7 +653,74 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="DiplomAppWorkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="College" EntityType="Self.College" />
+          <EntitySet Name="CollegeSpecialization" EntityType="Self.CollegeSpecialization" />
+          <EntitySet Name="CollegeSubject" EntityType="Self.CollegeSubject" />
+          <EntitySet Name="EducationalMaterial" EntityType="Self.EducationalMaterial" />
+          <EntitySet Name="NewsCollege" EntityType="Self.NewsCollege" />
+          <EntitySet Name="Specialization" EntityType="Self.Specialization" />
+          <EntitySet Name="SubjectSpecialization" EntityType="Self.SubjectSpecialization" />
+          <EntitySet Name="SubjectStudies" EntityType="Self.SubjectStudies" />
+          <EntitySet Name="SubjectTask" EntityType="Self.SubjectTask" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TaskProf" EntityType="Self.TaskProf" />
+          <EntitySet Name="UserApp" EntityType="Self.UserApp" />
+          <EntitySet Name="UserSubject" EntityType="Self.UserSubject" />
+          <AssociationSet Name="FK_CollegeSpecialization_College" Association="Self.FK_CollegeSpecialization_College">
+            <End Role="College" EntitySet="College" />
+            <End Role="CollegeSpecialization" EntitySet="CollegeSpecialization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollegeSubject_College" Association="Self.FK_CollegeSubject_College">
+            <End Role="College" EntitySet="College" />
+            <End Role="CollegeSubject" EntitySet="CollegeSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsCollege_College" Association="Self.FK_NewsCollege_College">
+            <End Role="College" EntitySet="College" />
+            <End Role="NewsCollege" EntitySet="NewsCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollegeSpecialization_Specialization" Association="Self.FK_CollegeSpecialization_Specialization">
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="CollegeSpecialization" EntitySet="CollegeSpecialization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollegeSubject_SubjectStudies" Association="Self.FK_CollegeSubject_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="CollegeSubject" EntitySet="CollegeSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalMaterial_SubjectStudies" Association="Self.FK_EducationalMaterial_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="EducationalMaterial" EntitySet="EducationalMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectSpecialization_Specialization" Association="Self.FK_SubjectSpecialization_Specialization">
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="SubjectSpecialization" EntitySet="SubjectSpecialization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectSpecialization_SubjectStudies" Association="Self.FK_SubjectSpecialization_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="SubjectSpecialization" EntitySet="SubjectSpecialization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectTask_SubjectStudies" Association="Self.FK_SubjectTask_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="SubjectTask" EntitySet="SubjectTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserApp_SubjectStudies" Association="Self.FK_UserApp_SubjectStudies">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="UserApp" EntitySet="UserApp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubject_SubjectStudies1" Association="Self.FK_UserSubject_SubjectStudies1">
+            <End Role="SubjectStudies" EntitySet="SubjectStudies" />
+            <End Role="UserSubject" EntitySet="UserSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectTask_TaskProf" Association="Self.FK_SubjectTask_TaskProf">
+            <End Role="TaskProf" EntitySet="TaskProf" />
+            <End Role="SubjectTask" EntitySet="SubjectTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubject_UserApp" Association="Self.FK_UserSubject_UserApp">
+            <End Role="UserApp" EntitySet="UserApp" />
+            <End Role="UserSubject" EntitySet="UserSubject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -692,131 +729,132 @@
           <EntitySetMapping Name="College">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.College">
               <MappingFragment StoreEntitySet="College">
-                <ScalarProperty Name="LogoCollege" ColumnName="LogoCollege" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="NameCollege" ColumnName="NameCollege" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NameCollege" ColumnName="NameCollege" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LogoCollege" ColumnName="LogoCollege" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CollegeSpecialization">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.CollegeSpecialization">
               <MappingFragment StoreEntitySet="CollegeSpecialization">
-                <ScalarProperty Name="idSpecialization" ColumnName="idSpecialization" />
-                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
+                <ScalarProperty Name="idSpecialization" ColumnName="idSpecialization" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CollegeSubject">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.CollegeSubject">
               <MappingFragment StoreEntitySet="CollegeSubject">
-                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
-                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EducationalMaterial">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.EducationalMaterial">
               <MappingFragment StoreEntitySet="EducationalMaterial">
-                <ScalarProperty Name="PhotoBook" ColumnName="PhotoBook" />
-                <ScalarProperty Name="AuthorBook" ColumnName="AuthorBook" />
-                <ScalarProperty Name="LinkBook" ColumnName="LinkBook" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="NameBook" ColumnName="NameBook" />
-                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="NameBook" ColumnName="NameBook" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LinkBook" ColumnName="LinkBook" />
+                <ScalarProperty Name="AuthorBook" ColumnName="AuthorBook" />
+                <ScalarProperty Name="PhotoBook" ColumnName="PhotoBook" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NewsCollege">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.NewsCollege">
               <MappingFragment StoreEntitySet="NewsCollege">
-                <ScalarProperty Name="PhotoNews" ColumnName="PhotoNews" />
-                <ScalarProperty Name="LinkNews" ColumnName="LinkNews" />
-                <ScalarProperty Name="TextNews" ColumnName="TextNews" />
-                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCollege" ColumnName="idCollege" />
+                <ScalarProperty Name="TextNews" ColumnName="TextNews" />
+                <ScalarProperty Name="LinkNews" ColumnName="LinkNews" />
+                <ScalarProperty Name="PhotoNews" ColumnName="PhotoNews" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specialization">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.Specialization">
               <MappingFragment StoreEntitySet="Specialization">
-                <ScalarProperty Name="PhotoSprcialization" ColumnName="PhotoSprcialization" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="NameSpecialization" ColumnName="NameSpecialization" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NameSpecialization" ColumnName="NameSpecialization" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PhotoSprcialization" ColumnName="PhotoSprcialization" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubjectSpecialization">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.SubjectSpecialization">
               <MappingFragment StoreEntitySet="SubjectSpecialization">
-                <ScalarProperty Name="idSpecialization" ColumnName="idSpecialization" />
-                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="idSpecialization" ColumnName="idSpecialization" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubjectStudies">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.SubjectStudies">
               <MappingFragment StoreEntitySet="SubjectStudies">
-                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubjectTask">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.SubjectTask">
               <MappingFragment StoreEntitySet="SubjectTask">
-                <ScalarProperty Name="idTask" ColumnName="idTask" />
-                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="idTask" ColumnName="idTask" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaskProf">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.TaskProf">
               <MappingFragment StoreEntitySet="TaskProf">
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
-                <ScalarProperty Name="Exercise" ColumnName="Exercise" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Exercise" ColumnName="Exercise" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserApp">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.UserApp">
               <MappingFragment StoreEntitySet="UserApp">
-                <ScalarProperty Name="PhotoProfile" ColumnName="PhotoProfile" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="SurName" ColumnName="SurName" />
-                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PhotoProfile" ColumnName="PhotoProfile" />
+                <ScalarProperty Name="idFavoriteSubject" ColumnName="idFavoriteSubject" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserSubject">
             <EntityTypeMapping TypeName="DiplomAppWorkModel.UserSubject">
               <MappingFragment StoreEntitySet="UserSubject">
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

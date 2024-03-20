@@ -27,7 +27,9 @@ namespace HelpStudent.Model
         public string Email { get; set; }
         public string Age { get; set; }
         public string PhotoProfile { get; set; }
+        public Nullable<int> idFavoriteSubject { get; set; }
     
+        public virtual SubjectStudies SubjectStudies { get; set; }
         public virtual ICollection<UserSubject> UserSubject { get; set; }
     }
 }

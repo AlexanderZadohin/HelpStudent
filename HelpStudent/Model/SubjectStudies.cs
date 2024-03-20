@@ -20,6 +20,8 @@ namespace HelpStudent.Model
             this.EducationalMaterial = new HashSet<EducationalMaterial>();
             this.SubjectSpecialization = new HashSet<SubjectSpecialization>();
             this.SubjectTask = new HashSet<SubjectTask>();
+            this.UserApp = new HashSet<UserApp>();
+            this.UserSubject = new HashSet<UserSubject>();
         }
     
         public int id { get; set; }
@@ -29,6 +31,7 @@ namespace HelpStudent.Model
         public virtual ICollection<EducationalMaterial> EducationalMaterial { get; set; }
         public virtual ICollection<SubjectSpecialization> SubjectSpecialization { get; set; }
         public virtual ICollection<SubjectTask> SubjectTask { get; set; }
-        public virtual UserSubject UserSubject { get; set; }
+        public virtual ICollection<UserApp> UserApp { get; set; }
+        public virtual ICollection<UserSubject> UserSubject { get; set; }
     }
 }

@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
       d:DesignHeight="856" d:DesignWidth="540"
-      Title="BookScreenPage"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+      Title="BookScreenPage">
     <Grid>
         <StackPanel Margin="20" Grid.RowSpan="2">
             <TextBlock Text="Учебный материал"/>
@@ -20,7 +19,7 @@
             </ComboBox>
             <ListBox Margin="5" Name="BookMaterialLb" Background="{x:Null}" 
          ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-         d:ItemsSource="{d:SampleData ItemCount=5}" Height="730">
+         d:ItemsSource="{d:SampleData ItemCount=5}" Height="730" Width="460">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Width="500" Height="750"/>
@@ -35,8 +34,10 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
-
         </StackPanel>
     </Grid>
 </Page>

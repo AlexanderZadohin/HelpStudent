@@ -14,18 +14,23 @@
             <Button Width="300" HorizontalAlignment="Left">
                 <Image Source="/Resource/Image/BackButton.png" />
             </Button>
-            <ListBox Name="QuestionLb"  SelectionChanged="QuestionLb_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Background="{x:Null}" 
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="650">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Question}" FontWeight="Bold" Margin="0,0,0,5"/>
-                            <RadioButton Content="{Binding OptionA}" Margin="0,0,0,3"/>
-                            <RadioButton Content="{Binding OptionB}" Margin="0,0,0,3"/>
-                            <RadioButton Content="{Binding OptionC}" Margin="0,0,0,3"/>
-                            <RadioButton Content="{Binding OptionD}" Margin="0,0,0,3"/>
-                        </StackPanel>
+                        <Grid Height="300">
+                            <StackPanel>
+                                <Image/>
+                                <TextBox Text="Ввести ответ"/>
+                            </StackPanel>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Resources>
+                    <Style BasedOn="{StaticResource lbstyle}" TargetType="ListBoxItem"/>
+                </ListBox.Resources>
             </ListBox>
             <Button Content="Ответить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" />
 

@@ -65,58 +65,58 @@
     </ApplicationDefinition>
     <Compile Include="Class\ClassFrame.cs" />
     <Compile Include="Model\College.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CollegeSpecialization.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CollegeSubject.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiplomModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiplomModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiplomModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiplomModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiplomModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\EducationalMaterial.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HelpStudentModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HelpStudentModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HelpStudentModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HelpStudentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NewsCollege.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Specialization.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SubjectSpecialization.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SubjectStudies.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SubjectTask.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TaskProf.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UserApp.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UserSubject.cs">
-      <DependentUpon>HelpStudentModel.tt</DependentUpon>
+      <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="View\UsePage\BookScreenPage.xaml.cs">
       <DependentUpon>BookScreenPage.xaml</DependentUpon>
@@ -247,12 +247,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\HelpStudentModel.edmx">
+    <EntityDeploy Include="Model\DiplomModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HelpStudentModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DiplomModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\HelpStudentModel.edmx.diagram">
-      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
+    <None Include="Model\DiplomModel.edmx.diagram">
+      <DependentUpon>DiplomModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -298,15 +298,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\HelpStudentModel.Context.tt">
+    <Content Include="Model\DiplomModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
-      <LastGenOutput>HelpStudentModel.Context.cs</LastGenOutput>
+      <DependentUpon>DiplomModel.edmx</DependentUpon>
+      <LastGenOutput>DiplomModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\HelpStudentModel.tt">
+    <Content Include="Model\DiplomModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HelpStudentModel.edmx</DependentUpon>
-      <LastGenOutput>HelpStudentModel.cs</LastGenOutput>
+      <DependentUpon>DiplomModel.edmx</DependentUpon>
+      <LastGenOutput>DiplomModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
