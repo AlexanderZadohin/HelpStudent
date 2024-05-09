@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Учебный материал"/>
+            <TextBlock Text="Учебный материал" FontWeight="Bold"/>
             <Button Width="300" HorizontalAlignment="Left">
                 <Image Source="/Resource/Image/BackButton.png"/>
             </Button>

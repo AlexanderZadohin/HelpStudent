@@ -16,7 +16,7 @@ namespace HelpStudent.View.UsePage
         {
             InitializeComponent();
 
-            TestLb.ItemsSource = App.context.TaskProf.ToList(); 
+            TestLb.ItemsSource = App.context.AnswerProf.ToList(); 
             
             currentUser = user;
         }

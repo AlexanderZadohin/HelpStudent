@@ -5,24 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
-      d:DesignHeight="856" d:DesignWidth="540"
+      d:DesignHeight="640" d:DesignWidth="1300"
       Title="NewsScreenPage">
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Новостьи и статьи"/>
-            <ListBox Name="NewsLb" 
+            <TextBlock Margin="5" HorizontalAlignment="Center" FontWeight="Bold" Text="Новостьи и статьи"/>
+            <ListBox Name="NewsLb"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                      Background="{x:Null}" 
                      d:ItemsSource="{d:SampleData ItemCount=5}" 
                      SelectionChanged="NewsLb_SelectionChanged" 
-                     Height="775">
+                     Height="550"
+                     >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Background="{StaticResource Secondcolor}">
-                            <Image Source="{Binding PhotoNews}" Width="200" Height="200" Margin="10,0,10,0"/>
-                            <StackPanel Width="265">
+                            <Image Source="{Binding PhotoNews}" Width="300" Height="200" Margin="10,0,10,0"/>
+                            <StackPanel Width="1000">
                                 <TextBlock Text="{Binding College.NameCollege}" FontWeight="Bold" FontSize="16" Margin="10 10 10 0"/>
                                 <TextBlock Text="{Binding TextNews}" TextWrapping="Wrap" FontSize="15" Margin="10"/>
                             </StackPanel>

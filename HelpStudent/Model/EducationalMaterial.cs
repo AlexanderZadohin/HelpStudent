@@ -15,7 +15,7 @@ namespace HelpStudent.Model
     public partial class EducationalMaterial
     {
         public int id { get; set; }
-        public Nullable<int> idSubject { get; set; }
+        public int idSubject { get; set; }
         public string NameBook { get; set; }
         public string Description { get; set; }
         public string LinkBook { get; set; }

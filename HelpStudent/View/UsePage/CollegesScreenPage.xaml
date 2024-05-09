@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
-      d:DesignHeight="856" d:DesignWidth="540"
+      d:DesignHeight="640" d:DesignWidth="1300"
       Title="CollegesScreenPage">
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Колледжи"/>
+            <TextBlock Text="Колледжи" FontWeight="Bold" TextAlignment="Center" Margin="5"/>
             <TextBox Text="Введите название колледжа" 
                      Name="CollegeSearchTb" 
                      GotFocus="CollegeSearchTb_GotFocus" 
@@ -23,15 +23,20 @@
                      Background="{x:Null}" 
                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                     Name="CollegeLb" Height="735">
+                     Name="CollegeLb" Height="500">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="475" Orientation="Horizontal" Margin="0 10 10 10" Background="{StaticResource Secondcolor}">
-                            <Image Source="{Binding LogoCollege}" Width="80" Height="80" Margin="10"/>
-                            <StackPanel Width="380">
-                                <TextBlock Text="{Binding NameCollege}" FontWeight="Bold" FontSize="20"/>
-                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="15" Margin="0 0 50 0"/>
-                                <TextBlock Text="{Binding SpecializationsCount, StringFormat='Количество специальностей: {0}'}" TextWrapping="Wrap"/>
+                        <StackPanel Width="1230" Orientation="Horizontal" Margin="0 10 10 10" Background="{StaticResource Secondcolor}">
+                            <Image Source="{Binding LogoCollege}" Width="80" Height="80" Margin="10 10 30 10"/>
+                            <StackPanel Width="600" Margin="10">
+                                <TextBlock Text="{Binding NameCollege}" 
+                                           FontWeight="Bold" 
+                                           FontSize="20"/>
+                                <TextBlock Text="{Binding Description}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="15" 
+                                           Margin="0 0 50 0"/>
+                                <TextBlock Text="{Binding AmountSpecialization, StringFormat={}Количество специальностей:{0}}"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
-      d:DesignHeight="856" d:DesignWidth="540"
+      d:DesignHeight="640" d:DesignWidth="1300"
       Title="ProfileScreenPage">
 
     <Grid>
@@ -13,7 +13,7 @@
             <TextBlock Text="Профиль" FontSize="75"/>
             <StackPanel Orientation="Horizontal">
                 <Image Name="ProfileImg" Height="150"/>
-                <StackPanel Width="350">
+                <StackPanel Width="1000">
                     <TextBlock Name="ProfileFioTb" FontSize="25" Margin="5 5 0 10"/>
                     <TextBlock Name="ProfileAgeTb" FontSize="25" Margin="5 5 0 10"/>
                     <TextBlock Name="ProfileEmailTb" FontSize="25" TextWrapping="Wrap" Margin="5 5 0 5"/>
@@ -22,58 +22,81 @@
             <Button Background="{x:Null}" Width="340" HorizontalAlignment="Left">
                 <Image Source="/Resource/Image/ChangeProfile.png" />
             </Button>
-            <ComboBox Name="FavoriteSubjectCmb" SelectionChanged="FavoriteSubjectCmb_SelectionChanged">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding AssumedProfession}" Foreground="Black"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <TextBlock Text="Рекомендуемые специальности:"/>
-            <ListBox Name="SpecializationLb" Background="{x:Null}" 
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                     d:ItemsSource="{d:SampleData ItemCount=2}" 
-                     MaxHeight="200">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Width="500" Height="200"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Width="225" Height="185" Margin="15" HorizontalAlignment="Center" Background="{StaticResource Secondcolor}">
-                            <Image Margin="20" Source="{Binding Specialization.PhotoSprcialization}" Width="150" Height="100" Stretch="UniformToFill"/>
-                            <TextBlock TextAlignment="Center" Text="{Binding Specialization.NameSpecialization}" Width="200" FontSize="15" FontWeight="Bold"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <TextBlock Text="Рекомендуемые колледжи:"/>
-            <ListBox Name="CollgeLb" 
-                     Background="{x:Null}" 
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                     d:ItemsSource="{d:SampleData ItemCount=2}"
-                     MaxHeight="200"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     HorizontalContentAlignment="Center"
-                     VerticalContentAlignment="Center">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" Width="500" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Width="225" Height="150" Margin="15" HorizontalAlignment="Center" Background="{StaticResource Secondcolor}">
-                            <Image Margin="20" Source="{Binding College.LogoCollege}" Width="75" Height="75" Stretch="UniformToFill"/>
-                            <TextBlock TextAlignment="Center" Text="{Binding College.NameCollege}" Width="200" FontSize="10" FontWeight="Bold"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <WrapPanel>
+                <TextBlock Text="Предпологаемая прфессия: "/>
+                <ComboBox Name="AssumpedProfessionCmb" Margin="0 0 15 0" Width="300" HorizontalAlignment="Left" SelectionChanged="AssumpedProfessionCmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AssumedProfessionName}" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="Любимый предмет: "/>
+                <ComboBox Name="FavoriteSubjectCmb" Width="300" HorizontalAlignment="Left" SelectionChanged="FavoriteSubjectCmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SubjectName}" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <StackPanel Width="630">
+                    <TextBlock Text="Рекомендуемые специальности:"/>
+                    <ListBox Name="SpecializationLb" Background="{x:Null}" 
+         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+         ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+         d:ItemsSource="{d:SampleData ItemCount=2}" 
+         MaxHeight="200"       
+         HorizontalAlignment="Center"
+         VerticalAlignment="Center"
+         HorizontalContentAlignment="Center"
+         VerticalContentAlignment="Center">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Width="500" Height="200"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Width="225" Height="185" Margin="15" HorizontalAlignment="Center" Background="{StaticResource Secondcolor}">
+                                    <Image Margin="20" Source="{Binding Specialization.PhotoSprcialization}" Width="150" Height="100" Stretch="UniformToFill"/>
+                                    <TextBlock TextAlignment="Center" Text="{Binding Specialization.NameSpecialization}" Width="200" FontSize="15" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+                <StackPanel Width="630">
+                    <TextBlock Text="Рекомендуемые колледжи:"/>
+                    <ListBox Name="CollgeLb" 
+         Background="{x:Null}" 
+         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+         ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+         d:ItemsSource="{d:SampleData ItemCount=2}"
+         MaxHeight="200"
+         HorizontalAlignment="Center"
+         VerticalAlignment="Center"
+         HorizontalContentAlignment="Center"
+         VerticalContentAlignment="Center">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Width="500" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Width="225" Height="180" Margin="15" HorizontalAlignment="Center" Background="{StaticResource Secondcolor}">
+                                    <Image Margin="20" Source="{Binding College.LogoCollege}" Width="100" Stretch="UniformToFill"/>
+                                    <TextBlock TextAlignment="Center" Text="{Binding College.NameCollege}" Width="200" FontSize="10" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </WrapPanel>
         </StackPanel>
     </Grid>
 </Page>

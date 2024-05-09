@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpStudent.View.Windows"
         mc:Ignorable="d" Icon="/Resource/Icons/Logotip.png"
-        Title="Регистрация/Вход" Height="1000" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="HelpStudent" Height="768" Width="1366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".02*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height=".12*"/>
+            <RowDefinition Height=".14*"/>
         </Grid.RowDefinitions>
         <Frame NavigationUIVisibility="Hidden" Name="MainScreenFrm" Grid.Row="1"/>
         <Grid Grid.Row="2">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpStudent"
         mc:Ignorable="d" Icon="/Resource/Icons/Logotip.png"
-        Title="Регистрация/Вход" Height="1000" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Регистрация/Вход" Height="900" Width="1366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".05*"/>

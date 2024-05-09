@@ -11,6 +11,8 @@ namespace HelpStudent.View.Windows
     /// </summary>
     public partial class MainScreenWindow : Window
     {
+
+        public UserApp currentUser;
         public MainScreenWindow()
         {
             InitializeComponent();
@@ -21,16 +23,16 @@ namespace HelpStudent.View.Windows
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
         }
 
-        public UserApp currentUser;
         public MainScreenWindow(UserApp user)
         {
             InitializeComponent();
 
+            currentUser = user;
             MainScreenFrm.Navigate(new View.UsePage.TestSubjectScreenPage(currentUser));
 
             TestTbl.Foreground = (SolidColorBrush)FindResource("ActiveElement");
             TestImg.Source = new BitmapImage(new Uri("/Resource/Icons/ActiveTestIcon.png", UriKind.Relative));
-            currentUser = user;
+            
         }
 
         private void TestBarBtn_Click(object sender, RoutedEventArgs e)

@@ -12,13 +12,20 @@ namespace HelpStudent.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SubjectTask
+    public partial class AssumedProfession
     {
-        public int id { get; set; }
-        public Nullable<int> idSubject { get; set; }
-        public Nullable<int> idTask { get; set; }
+        public AssumedProfession()
+        {
+            this.CollegeSubject = new HashSet<CollegeSubject>();
+            this.SubjectSpecialization = new HashSet<SubjectSpecialization>();
+            this.UserApp = new HashSet<UserApp>();
+        }
     
-        public virtual SubjectStudies SubjectStudies { get; set; }
-        public virtual TaskProf TaskProf { get; set; }
+        public int id { get; set; }
+        public string AssumedProfessionName { get; set; }
+    
+        public virtual ICollection<CollegeSubject> CollegeSubject { get; set; }
+        public virtual ICollection<SubjectSpecialization> SubjectSpecialization { get; set; }
+        public virtual ICollection<UserApp> UserApp { get; set; }
     }
 }

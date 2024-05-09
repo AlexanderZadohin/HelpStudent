@@ -12,14 +12,21 @@ namespace HelpStudent.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class NewsCollege
+    public partial class AnswerProf
     {
-        public int id { get; set; }
-        public int idCollege { get; set; }
-        public string TextNews { get; set; }
-        public string LinkNews { get; set; }
-        public string PhotoNews { get; set; }
+        public AnswerProf()
+        {
+            this.TestAnswerProf = new HashSet<TestAnswerProf>();
+            this.TestResult = new HashSet<TestResult>();
+        }
     
-        public virtual College College { get; set; }
+        public int id { get; set; }
+        public string Answer { get; set; }
+        public int Mark { get; set; }
+        public int idTask { get; set; }
+    
+        public virtual TaskProf TaskProf { get; set; }
+        public virtual ICollection<TestAnswerProf> TestAnswerProf { get; set; }
+        public virtual ICollection<TestResult> TestResult { get; set; }
     }
 }

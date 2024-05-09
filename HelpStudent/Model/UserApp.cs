@@ -14,6 +14,11 @@ namespace HelpStudent.Model
     
     public partial class UserApp
     {
+        public UserApp()
+        {
+            this.TestResult = new HashSet<TestResult>();
+        }
+    
         public int id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -23,7 +28,10 @@ namespace HelpStudent.Model
         public string Age { get; set; }
         public string PhotoProfile { get; set; }
         public Nullable<int> idFavoriteSubject { get; set; }
+        public Nullable<int> idAssumpedProfession { get; set; }
     
+        public virtual AssumedProfession AssumedProfession { get; set; }
         public virtual SubjectStudies SubjectStudies { get; set; }
+        public virtual ICollection<TestResult> TestResult { get; set; }
     }
 }

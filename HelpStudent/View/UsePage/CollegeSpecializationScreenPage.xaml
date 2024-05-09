@@ -10,10 +10,13 @@
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Колледжи и специальности"/>
-            <Button Width="300" HorizontalAlignment="Left">
-                <Image Source="/Resource/Image/BackButton.png" />
-            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="500">
+
+                <Button  Background="{x:Null}" Width="50" HorizontalAlignment="Left">
+                    <Image Source="/Resource/Image/BackButton.png" />
+                </Button>
+                <TextBlock Text="        Колледжи и специальности" HorizontalAlignment="Center" Height="34"/>
+            </StackPanel>
             <StackPanel>
                 <WrapPanel>
                     <Image/>

@@ -17,7 +17,9 @@ namespace HelpStudent.Model
         public int id { get; set; }
         public int idCollege { get; set; }
         public int idSubject { get; set; }
+        public Nullable<int> idProfession { get; set; }
     
+        public virtual AssumedProfession AssumedProfession { get; set; }
         public virtual College College { get; set; }
         public virtual SubjectStudies SubjectStudies { get; set; }
     }

@@ -15,9 +15,11 @@ namespace HelpStudent.View.UsePage
         {
             InitializeComponent();
 
+            AssumpedProfessionCmb.ItemsSource = App.context.AssumedProfession.ToList();
+            AssumpedProfessionCmb.SelectedValuePath = "id";
+
             FavoriteSubjectCmb.ItemsSource = App.context.SubjectStudies.ToList();
             FavoriteSubjectCmb.SelectedValuePath = "id";
-            FavoriteSubjectCmb.SelectedIndex = Convert.ToInt32(user.idFavoriteSubject - 1);
 
 
             BitmapImage bitmap = new BitmapImage();
@@ -33,8 +35,14 @@ namespace HelpStudent.View.UsePage
 
         private void FavoriteSubjectCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CollgeLb.ItemsSource = App.context.CollegeSubject.Where(x => x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1).ToList();
-            SpecializationLb.ItemsSource = App.context.SubjectSpecialization.Where(x => x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1).ToList();
+            CollgeLb.ItemsSource = App.context.CollegeSubject.Where(x => x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1 || x.idProfession == AssumpedProfessionCmb.SelectedIndex + 1).ToList();
+            SpecializationLb.ItemsSource = App.context.SubjectSpecialization.Where(x => x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1 || x.idProfession == AssumpedProfessionCmb.SelectedIndex + 1).ToList();
+        }
+
+        private void AssumpedProfessionCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollgeLb.ItemsSource = App.context.CollegeSubject.Where(x => x.idProfession == AssumpedProfessionCmb.SelectedIndex + 1 || x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1).ToList();
+            SpecializationLb.ItemsSource = App.context.SubjectSpecialization.Where(x => x.idProfession == AssumpedProfessionCmb.SelectedIndex + 1 || x.idSubject == FavoriteSubjectCmb.SelectedIndex + 1).ToList();
         }
     }
 }

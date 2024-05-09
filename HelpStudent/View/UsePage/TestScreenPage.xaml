@@ -5,26 +5,29 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
-      d:DesignHeight="856" d:DesignWidth="540"
+      d:DesignHeight="660" d:DesignWidth="1300"
       Title="TestScreenPage">
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Профтестирование"/>
-            <Button Width="300" x:Name="GoBackBtn" Click="GoBackBtn_Click" HorizontalAlignment="Left">
-                <Image Source="/Resource/Image/BackButton.png" />
-            </Button>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="480">
+                <Button Background="{x:Null}" Width="50" x:Name="GoBackBtn" Click="GoBackBtn_Click" HorizontalAlignment="Left">
+                    <Image Source="/Resource/Image/BackButton.png" />
+                </Button>
+                <TextBlock Text="           Профтестирование" FontWeight="Bold" Margin="5" Height="37"/>
+            </StackPanel>
             <ListBox d:ItemsSource="{d:SampleData ItemCount=5}"
                      Name="TestLb"
                      Background="{x:Null}" 
                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="650">
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="468">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Border BorderBrush="Gray" BorderThickness="1">
                                 <StackPanel Margin="10">
-                                    <TextBlock Text="{Binding Exercise}" Margin="0 0 0 10"/>
+                                    <TextBlock Text="{Binding TaskProf.Exercise}" Margin="0 0 0 10"/>
+                                    <TextBlock Text="{Binding Answer}" Margin="0 0 0 10"/>
                                     <TextBox Text="Ввести ответ" Margin="0 10 0 0"/>
                                 </StackPanel>
                             </Border>

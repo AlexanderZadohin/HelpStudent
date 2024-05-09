@@ -21,14 +21,17 @@ namespace HelpStudent.View.UsePage
 
         private void passwordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            textBox.Visibility = Visibility.Collapsed;
+            if (PasswordPb.Password == "Password")
+            {
+                PasswordPb.Password = "";
+            }
         }
 
         private void passwordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(PassworPb.Password))
+            if (string.IsNullOrEmpty(PasswordPb.Password))
             {
-                textBox.Visibility = Visibility.Visible;
+                PasswordPb.Password = "Password";
             }
         }
 
@@ -56,9 +59,8 @@ namespace HelpStudent.View.UsePage
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            string[] fullNameParts = FIOTbl.Text.Split(' '); // Предполагаем, что ФИО разделено пробелами
+            string[] fullNameParts = FIOTbl.Text.Split(' ');
 
-            // Проверяем, что введены все три части ФИО
             if (fullNameParts.Length == 3)
             {
                 string lastName = fullNameParts[0];
@@ -66,7 +68,7 @@ namespace HelpStudent.View.UsePage
                 string middleName = fullNameParts[2];
 
                 UserApp userApp = App.context.UserApp.FirstOrDefault(u =>
-                    u.Password == PassworPb.Password &&
+                    u.Password == PasswordPb.Password &&
                     u.SurName == lastName &&
                     u.FirstName == firstName &&
                     u.SecondName == middleName);
@@ -80,12 +82,12 @@ namespace HelpStudent.View.UsePage
                 }
                 else
                 {
-                    MessageBox.Show("Данные для входа введены неверно");
+                    MessageBox.Show("Данные для входа введены неверно!");
                 }
             }
             else
             {
-                MessageBox.Show("Введите корректно ФИО");
+                MessageBox.Show("Введите корректно ФИО!");
             }
         }
     }

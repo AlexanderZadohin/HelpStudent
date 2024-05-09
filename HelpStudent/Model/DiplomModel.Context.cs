@@ -25,6 +25,8 @@ namespace HelpStudent.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<AnswerProf> AnswerProf { get; set; }
+        public DbSet<AssumedProfession> AssumedProfession { get; set; }
         public DbSet<College> College { get; set; }
         public DbSet<CollegeSpecialization> CollegeSpecialization { get; set; }
         public DbSet<CollegeSubject> CollegeSubject { get; set; }
@@ -33,9 +35,10 @@ namespace HelpStudent.Model
         public DbSet<Specialization> Specialization { get; set; }
         public DbSet<SubjectSpecialization> SubjectSpecialization { get; set; }
         public DbSet<SubjectStudies> SubjectStudies { get; set; }
-        public DbSet<SubjectTask> SubjectTask { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TaskProf> TaskProf { get; set; }
+        public DbSet<TestAnswerProf> TestAnswerProf { get; set; }
+        public DbSet<TestResult> TestResult { get; set; }
         public DbSet<UserApp> UserApp { get; set; }
     }
 }

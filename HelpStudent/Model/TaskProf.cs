@@ -16,13 +16,12 @@ namespace HelpStudent.Model
     {
         public TaskProf()
         {
-            this.SubjectTask = new HashSet<SubjectTask>();
+            this.AnswerProf = new HashSet<AnswerProf>();
         }
     
         public int id { get; set; }
         public string Exercise { get; set; }
-        public string Answer { get; set; }
     
-        public virtual ICollection<SubjectTask> SubjectTask { get; set; }
+        public virtual ICollection<AnswerProf> AnswerProf { get; set; }
     }
 }

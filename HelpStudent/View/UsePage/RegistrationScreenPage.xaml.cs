@@ -16,27 +16,33 @@ namespace HelpStudent.View.UsePage
         }
         private void passwordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            textBox.Visibility = Visibility.Collapsed;
+            if(PasswordPb.Password == "Password")
+            {
+                PasswordPb.Password = "";
+            }
         }
 
         private void passwordBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(PasswordPb.Password))
             {
-                textBox.Visibility = Visibility.Visible;
+                PasswordPb.Password = "Password";
             }
         }
 
         private void passwordBoxSec_GotFocus(object sender, RoutedEventArgs e)
         {
-            textBoxSec.Visibility = Visibility.Collapsed;
+            if (PasswordPbSec.Password == "Password")
+            {
+                PasswordPbSec.Password = "";
+            }
         }
 
         private void passwordBoxSec_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(PasswordPbSec.Password))
             {
-                textBoxSec.Visibility = Visibility.Visible;
+                PasswordPbSec.Password = "Password";
             }
         }
 

@@ -5,14 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelpStudent.View.UsePage"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="500"
+      d:DesignHeight="650" d:DesignWidth="600"
       Title="RegistrationPage">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label Content="ФИО"
-                   Margin="10 0 10 0"/>
-            <TextBox Width="400" 
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="550">
+            <Label Content="ФИО"/>
+            <TextBox Width="550" 
                      Height="65" 
                      Margin="0 0 0 20" 
                      Text="Иванов Иван Иванович"
@@ -20,32 +19,37 @@
                      GotFocus="FIOTbl_GotFocus"
                      LostFocus="FIOTbl_LostFocus"
                      VerticalContentAlignment="Center"/>
-            
-            <Grid Height="143">
-                <Label Content="Пароль"
-                   Margin="10,0,10,99"/>
-                <PasswordBox x:Name="PassworPb" 
-                             Width="400" 
+
+            <Label Content="Пароль"/>
+            <PasswordBox x:Name="PasswordPb" 
+                             Width="550" 
                              Height="65" 
-                             Margin="10 20"
+                             Margin="0 0 0 20" 
                              LostFocus="passwordBox_LostFocus"
                              GotFocus="passwordBox_GotFocus"
-                             VerticalContentAlignment="Center"/>
-                <Label x:Name="textBox" Content="*****" Margin="10,49,309,53"/>
-            </Grid>
+                             VerticalContentAlignment="Center"
+                             Password="Password"
+                             PasswordChar="*"/>
+
 
             <Button Width="300" 
                     Height="65" 
-                    Margin="10 20" 
+                    Margin="10 20 10 0" 
                     Content="Войти"
                     Name="EnterBtn" Click="EnterBtn_Click"/>
-            <Button Width="400" 
-                    Height="65" Margin="10 20" 
-                    Content="Зарегестрироваться" 
-                    Background="{x:Null}" 
-                    BorderBrush="Black" 
+            <TextBlock
+                Width="400" 
+                Height="40" Margin="10 20" 
+                Background="{x:Null}"
+                TextAlignment="Center"
+                >
+                <Hyperlink
                     Name="RegistrationBtn"
-                    Click="RegistrationBtn_Click"/>
+                    Click="RegistrationBtn_Click"
+                    Foreground="White">
+                    Зарегестрироваться
+                </Hyperlink>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Page>

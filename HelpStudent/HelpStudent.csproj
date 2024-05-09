@@ -64,6 +64,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\ClassFrame.cs" />
+    <Compile Include="Model\AnswerProf.cs">
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssumedProfession.cs">
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\College.cs">
       <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
@@ -103,13 +109,16 @@
     <Compile Include="Model\SubjectStudies.cs">
       <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SubjectTask.cs">
-      <DependentUpon>DiplomModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TaskProf.cs">
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TestAnswerProf.cs">
+      <DependentUpon>DiplomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TestResult.cs">
       <DependentUpon>DiplomModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UserApp.cs">
@@ -277,9 +286,6 @@
     <Resource Include="Resource\Icons\TestIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Image\BackButton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\Image\TestButton.png" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +311,7 @@
       <DependentUpon>DiplomModel.edmx</DependentUpon>
       <LastGenOutput>DiplomModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Image\BackButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

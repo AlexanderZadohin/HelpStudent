@@ -1,4 +1,5 @@
 ﻿using HelpStudent.Model;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +18,13 @@ namespace HelpStudent.View.UsePage
 
             CongratulationsTb.DataContext = user;
 
-            CollegeLb.ItemsSource = App.context.College.ToList();
+            SubjectSpecialization specialization = new SubjectSpecialization();
+            //specialization.id = Convert.ToInt32(user.);
+            int spec = specialization.id;
+
+            //CongratulationsTb.Text = $"Поздравляем, вы прошли тестирование! Вам подходит профессия: {user..AssumedProfession}";
+
+            CollegeLb.ItemsSource = App.context.CollegeSpecialization.Where(c => c.idSpecialization == spec).ToList();
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
